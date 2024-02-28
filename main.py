@@ -1,5 +1,5 @@
- # importar las miles 
-import sys,pygame
+  # importar las miles 
+import pygame
   # inicializar el game 
 pygame.init()
 
