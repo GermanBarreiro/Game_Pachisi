@@ -10,11 +10,11 @@ try:
     from socket import *
     from pygame.locals import *
 except ImportError as err:
-    print(f"couldn't load module. {err}")
+    print(f"no se cargaron los modulos {err}")
     sys.exit(2)
 
 def load_png(name):
-    """ Load image and return image object"""
+    """ cargando la imangen y retornando el objeto """
     fullname = os.path.join("data", name)
     try:
         image = pygame.image.load(fullname)
@@ -138,7 +138,7 @@ def main():
     player2 = Bat("right")
 
     # Initialise ball
-    speed = 13
+    speed = 5
     rand = ((0.1 * (random.randint(5,8))))
     ball = Ball((0,0),(0.47,speed))
 
