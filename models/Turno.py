@@ -10,6 +10,9 @@ class Turno:
     def quien_empieza(self):
         jugador = random.choice(self.Players)
         print(f'El jugador seleccionado aleatoriamente para empezar es : {jugador.nombre}')
+    
+
+
 
 player_1=Player("German","asd","Azul",100,100)            
 player_2=Player("juan","123","Amarillo",100,100) 

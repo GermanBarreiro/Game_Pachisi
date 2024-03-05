@@ -1,11 +1,8 @@
 from Cell import Cell
-
-
 class Map:
     def __init__(self):
         self.cells = [None] * 68  
 
-        # Crear las celdas específicas según tus indicaciones
         self.cells[4] = Cell(5, "Amarillo", True, None,True)  # Punto de inicio para el jugador amarillo
         self.cells[67] = Cell(68, "Amarillo", None, False,True)  # Fin del recorrido para el jugador amarillo
 
