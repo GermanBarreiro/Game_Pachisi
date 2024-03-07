@@ -1,29 +1,24 @@
-# importar las miles 
 import pygame
-# inicializar el game 
-pygame.init()
-x=0
-FPS=60
-Reloj=pygame.time.Clock()
-#la ventana en que vamos a jugar  
-W,H =800,600 
-Pantalla=pygame.display.set_mode((W,H))
-wallpaper=pygame.image.load("data/fondo_2.png").convert()
-x=0
-Pantalla.blit(wallpaper, (x,0))
+from models import game_logic
 
-run=True
-while run:
-    for event in pygame.event.get():
-        if event.type==pygame.QUIT:run=False
-    x_aux= x % Pantalla.get_rect().width   
-    Pantalla.blit(wallpaper, (x_aux-Pantalla.get_rect().width,0))
-    if x_aux< W :
-        Pantalla.blit(wallpaper,(x_aux,0))
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))  # Define el tamaño de la ventana
+    font = pygame.font.Font(None, 24)  # Define la fuente para renderizar el texto
 
+    # Crear jugadores y añadirlos a la lista de jugadores
+    jugadores = []
+    juego = game_logic.Juego(jugadores, screen, font)
 
-    x-=1    
-    pygame.display.flip()
-    Reloj.tick(FPS)    
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:  # Cierra el juego si el usuario cierra la ventana
+                running = False
+        juego.jugar()
+        pygame.display.flip()  # Actualiza la pantalla
 
-pygame.quit
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
