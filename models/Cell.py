@@ -1,7 +1,8 @@
+import typing
 class Cell:
     def __init__(self, indice, color, inicio, fin, proteccion):
-        self.indice = indice #numeros
-        self.color = color #string
-        self.inicio = inicio #buleano
-        self.fin = fin #buleano
-        self.proteccion = proteccion #buleano
+        self.indice : int  = indice #numeros
+        self.color :str = color #string
+        self.inicio :bool= inicio #buleano
+        self.fin :bool= fin #buleano
+        self.proteccion :bool = proteccion #buleano
