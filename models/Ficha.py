@@ -3,3 +3,4 @@ class Ficha:
         self.on_star = True
         self.on_finish=False
         self.color=color
+        self.out_of_start = False

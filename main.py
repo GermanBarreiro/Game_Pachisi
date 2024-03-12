@@ -1,5 +1,5 @@
 import pygame
-from models import game_logic
+from Game_Pachisi.models import Juego
 
 def main():
     pygame.init()
@@ -8,7 +8,7 @@ def main():
 
     # Crear jugadores y añadirlos a la lista de jugadores
     jugadores = []
-    juego = game_logic.Juego(jugadores, screen, font)
+    juego = Juego.Juego(jugadores, screen, font)
 
     running = True
     while running:

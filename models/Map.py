@@ -1,4 +1,4 @@
-from Cell import Cell
+from cell import Cell
 class Map:
     def __init__(self):
         self.cells = [Cell(i,"Blanco",False,False,False) for i in range(68) ]    
