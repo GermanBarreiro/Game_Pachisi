@@ -15,18 +15,17 @@ class Juego:
 
     def mover_ficha(self, jugador, ficha, movimientos):
         # Encuentra la posición actual de la ficha
-        for i, celda in enumerate(self.tablero.cells):
-            if celda.color == ficha.color:
-                posicion_actual = i
-                break
+        current = self.tablero.cells.head
+        while current.cell.color != ficha.color:
+            current = current.next
 
         # Calcula la nueva posición
-        nueva_posicion = (posicion_actual + movimientos) % len(self.tablero.cells)
+        for _ in range(movimientos):
+            current = current.next
 
         # Mueve la ficha a la nueva posición
-        self.tablero.cells[posicion_actual].color = "Blanco"
-        self.tablero.cells[nueva_posicion].color = ficha.color
-        print(f"La ficha {ficha.color} del jugador {jugador.nombre} se ha movido a la celda {nueva_posicion}.")
+        current.cell.color = ficha.color
+        print(f"La ficha {ficha.color} del jugador {jugador.nombre} se ha movido a la celda {current.cell.indice}.")
 
     def check_ganador(self):
         # Este método verifica si hay un ganador

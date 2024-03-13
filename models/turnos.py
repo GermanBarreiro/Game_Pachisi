@@ -16,9 +16,9 @@ class Turno:
         return jugador_inicial
 
     def jugador_siguiente(self):
+        jugador_que_toca = self.players[self.actual_player]
+        print(f"Turno {self.num}. Le toca a {jugador_que_toca.nombre}")
         self.actual_player = (self.actual_player + 1) % len(self.players)
         if self.actual_player == 0:  # Si es el turno del primer jugador
             self.num += 1  # Incrementa el número de turno
-        jugador_que_toca = self.players[self.actual_player]
-        print(f"Turno {self.num}. Le toca a {jugador_que_toca.nombre}")
         return jugador_que_toca

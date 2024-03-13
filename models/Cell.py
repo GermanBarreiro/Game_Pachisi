@@ -1,4 +1,5 @@
 import typing
+
 class Cell:
     def __init__(self, indice, color, inicio, fin, proteccion):
         self.indice : int  = indice #numeros

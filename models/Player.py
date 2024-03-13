@@ -20,12 +20,3 @@ class Player:
                 ficha.out_of_start = True
                 print(f"La ficha {ficha.color} del jugador {self.nombre} ha sido sacada.")
                 break
-
-
-    
-player_1=Player("German","asd","Azul",100,100)            
-player_2=Player("juan","123","Amarillo",100,100) 
-player_3=Player("pedro","546","Rojo",100,100) 
-player_4=Player("alberto","8790","Verde",100,100) 
-
-jugadores = [player_1, player_2, player_3, player_4]

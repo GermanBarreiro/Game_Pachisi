@@ -17,5 +17,5 @@ juego = Juego(jugadores)
 juego.turno.quien_empieza()
 
 # Jugar 20 turnos como ejemplo
-for _ in range(20):
+for _ in range(1000000):
     juego.jugar_turno()
