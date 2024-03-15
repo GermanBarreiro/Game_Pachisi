@@ -1,24 +1,32 @@
 import pygame
-from Game_Pachisi.models import Juego
+import Map
 
-def main():
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))  # Define el tamaño de la ventana
-    font = pygame.font.Font(None, 24)  # Define la fuente para renderizar el texto
+pygame.init()
 
-    # Crear jugadores y añadirlos a la lista de jugadores
-    jugadores = []
-    juego = Juego.Juego(jugadores, screen, font)
+# Define las dimensiones de la ventana
+ancho_ventana = 1366
+alto_ventana = 768
 
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:  # Cierra el juego si el usuario cierra la ventana
-                running = False
-        juego.jugar()
-        pygame.display.flip()  # Actualiza la pantalla
+# Crea la ventana
+ventana = pygame.display.set_mode((ancho_ventana, alto_ventana))
 
-    pygame.quit()
+# Crea el mapa
+mapa = Map()
+# Bucle principal del juego
+Run = True
+while Run:
+    # Rellena la ventana con blanco
+    ventana.fill((255, 255, 255))
+    
+    mapa.draw_map(ventana, ancho_ventana, alto_ventana)
 
-if __name__ == "__main__":
-    main()
+    
+    # Actualiza la ventana
+    pygame.display.update()
+    
+    # Manejo de eventos
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            Run = False
+
+pygame.quit()
