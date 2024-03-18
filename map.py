@@ -46,23 +46,23 @@ class Map:
             if current == self.cells.head:
                 break
     
-    def draw_map(self, ventana, ancho_ventana, alto_ventana):
+    def draw_map(self, ventana, x_panel, y_panel):
         current = self.cells.head
-        cell_width = ancho_ventana // 8
-        cell_height = alto_ventana // 8
+        cell_width = 38  # Ancho de la celda en píxeles
+        cell_height = 76  # Alto de la celda en píxeles
+        colores = {
+            "Amarillo": (231, 150, 71),  # e79647
+            "Verde": (45, 204, 112),  # 2dcc70
+            "Rojo": (215, 152, 101),  # d79865
+            "Azul": (236, 220, 184)  # ecdcb8
+        }
         while True:
             cell = current.cell
-            x = (cell.indice % 8) * cell_width
-            y = (cell.indice // 8) * cell_height
+            x = x_panel + (cell.indice % 8) * cell_width
+            y = y_panel + (cell.indice // 8) * cell_height
             color = (255, 255, 255)  # blanco por defecto
-            if cell.color == "Amarillo":
-                color = (255, 255, 0)  # amarillo
-            elif cell.color == "Azul":
-                color = (0, 0, 255)  # azul
-            elif cell.color == "Rojo":
-                color = (255, 0, 0)  # rojo
-            elif cell.color == "Verde":
-                color = (0, 255, 0)  # verde
+            if cell.color in colores:
+                color = colores[cell.color]
             pygame.draw.rect(ventana, color, pygame.Rect(x, y, cell_width, cell_height))
             current = current.next
             if current == self.cells.head:

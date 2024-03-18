@@ -3,6 +3,11 @@ from dado import tirar_dado
 from map import Map
 from turnos import Turno 
 import random
+import json
+
+# Abre el archivo JSON y carga los datos
+with open('clics.json', 'r') as f:
+    clics = json.load(f)
 
 class Juego:
     def __init__(self, jugadores):
@@ -16,7 +21,7 @@ class Juego:
     def mover_ficha(self, jugador, ficha, movimientos):
         # Encuentra la posición actual de la ficha
         current = self.tablero.cells.head
-        while current.cell.color != ficha.color:
+        while current.cell.indice != ficha.indice:  # Busca la ficha por su índice en lugar de por su color
             current = current.next
 
         # Calcula la nueva posición
@@ -24,15 +29,18 @@ class Juego:
             current = current.next
 
         # Mueve la ficha a la nueva posición
-        current.cell.color = ficha.color
-        print(f"La ficha {ficha.color} del jugador {jugador.nombre} se ha movido a la celda {current.cell.indice}.")
+        current.cell.indice = ficha.indice  # Actualiza el índice de la celda con el de la ficha
+
+        # Actualiza la posición de la ficha en la imagen
+        ficha.x, ficha.y = clics[current.cell.indice]  # Asume que 'clics' es una lista de coordenadas (x, y)
+
+        print(f"La ficha {ficha.indice} del jugador {jugador.nombre} se ha movido a la celda {current.cell.indice}.")
 
     def check_ganador(self):
         # Este método verifica si hay un ganador
-        ganadores = [jugador for jugador in self.jugadores if self.fichas_en_meta(jugador)]
-        if len(ganadores) == 3:
-            perdedor = [jugador for jugador in self.jugadores if jugador not in ganadores][0]
-            print(f"Los ganadores son {ganadores[0].nombre}, {ganadores[1].nombre} y {ganadores[2].nombre}. El último lugar es para {perdedor.nombre}.")
+        ganador = [jugador for jugador in self.jugadores if self.fichas_en_meta(jugador)]
+        if ganador:  # Si hay un ganador
+            print(f"El ganador es {ganador[0].nombre}.")
             return True
         return False
 
